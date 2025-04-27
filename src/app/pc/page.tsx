@@ -3,9 +3,12 @@
 import { GamesList } from "@/components/game";
 import { ButtonList } from "@/components/home";
 import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
+import React from "react";
 
-export default function HomePage() {
-  const { data, error, isLoading } = useFetchDataFromRAWG<Results>("/games");
+const Pc = () => {
+  const { data, error, isLoading } =
+    useFetchDataFromRAWG<Results>("/games?platforms=4");
+  console.log(data);
   const games = data?.results || [];
 
   if (isLoading) return <p>Loading...</p>;
@@ -13,7 +16,9 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center bg-[#f9fafb]">
-      <h1 className="font-bold text-[50px] text-black p-5 font-lobster">Home and Trending</h1>
+      <h1 className="font-bold text-[50px] text-black p-5 font-lobster">
+        Games available on PC
+      </h1>
       <div className="flex w-full">
         <div className="sticky top-0 h-screen">
           <ButtonList />
@@ -22,4 +27,6 @@ export default function HomePage() {
       </div>
     </div>
   );
-}
+};
+
+export default Pc;

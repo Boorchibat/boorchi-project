@@ -1,3 +1,7 @@
+type Results = {
+    results: GameData[]
+}
+
 type GameData = {
     background_image: string,
     id:number,
@@ -5,24 +9,25 @@ type GameData = {
     rating: number,
     released: string,
     genres: Genre[],
-    parent_platform: parentPlatforms[],
     ratings: Rating[],
     short_screenshots: ShortScreens[],
     stores: store[],
     tags: Tags[],
+    platforms: platform[]
 }
 type Genre = {
     id: number,
     image_background: string,
     name: string,
 }
-type parentPlatforms = {
-    platform: insideParentPlatforms[];
+type platform = {
+    platform:  platformDetail
 }
-type insideParentPlatforms = {
-    id: number,
-    name:string
+type platformDetail = {
+    image_background: string,
+    name: string
 }
+
 type Rating = {
     id: number,
     title: string,
@@ -46,3 +51,6 @@ type Tags = {
     id: number,
     image_background: string
 }
+type GameListResponse = {
+    results: GameData[];
+  };
