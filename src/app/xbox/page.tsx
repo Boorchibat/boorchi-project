@@ -1,8 +1,32 @@
-import React from 'react'
+"use client";
 
-const xbox = () => {
+import { GamesList } from "@/components/game";
+import { ButtonList } from "@/components/home";
+import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
+import React from "react";
+
+const Xbox = () => {
+  const { data, error, isLoading } =
+    useFetchDataFromRAWG<Results>("/games?platforms=1");
+  console.log(data);
+  const games = data?.results || [];
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading games.</p>;
+
   return (
-    <div>xbox</div>
-  )
-}
-export default xbox
+    <div className="flex flex-col items-center bg-[#f9fafb]">
+      <h1 className="font-bold text-[50px] text-black p-5 font-lobster">
+        Games available on Xbox
+      </h1>
+      <div className="flex w-full">
+        <div className="sticky top-0 h-screen">
+          <ButtonList />
+        </div>
+        <GamesList games={games} />
+      </div>
+    </div>
+  );
+};
+
+export default Xbox;

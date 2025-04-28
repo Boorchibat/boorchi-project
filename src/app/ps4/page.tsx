@@ -1,8 +1,32 @@
-import React from 'react'
+"use client";
 
- const ps4 = () => {
+import { GamesList } from "@/components/game";
+import { ButtonList } from "@/components/home";
+import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
+import React from "react";
+
+const Ps4 = () => {
+  const { data, error, isLoading } =
+    useFetchDataFromRAWG<Results>("/games?platforms=18");
+  console.log(data);
+  const games = data?.results || [];
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading games.</p>;
+
   return (
-    <div>ps4</div>
-  )
-}
-export default ps4
+    <div className="flex flex-col items-center bg-[#f9fafb]">
+      <h1 className="font-bold text-[50px] text-black p-5 font-lobster">
+        Games available on PS4
+      </h1>
+      <div className="flex w-full">
+        <div className="sticky top-0 h-screen">
+          <ButtonList />
+        </div>
+        <GamesList games={games} />
+      </div>
+    </div>
+  );
+};
+
+export default Ps4;

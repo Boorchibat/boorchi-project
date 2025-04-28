@@ -11,7 +11,7 @@ type GameCardProps = {
 export const GameCard = ({ game }: GameCardProps) => {
   const { id, background_image, name, rating, released } = game;
   const formattedYear = new Date(released).getFullYear();
-    console.log(game)
+
 
   return (
     <div className="w-[150px]h-[300px]">

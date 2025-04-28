@@ -1,56 +1,66 @@
 type Results = {
-    results: GameData[]
-}
+  results: GameData[];
+};
 
 type GameData = {
-    background_image: string,
-    id:number,
-    name: string,
-    rating: number,
-    released: string,
-    genres: Genre[],
-    ratings: Rating[],
-    short_screenshots: ShortScreens[],
-    stores: store[],
-    tags: Tags[],
-    platforms: platform[]
-}
+  background_image: string;
+  id: number;
+  name: string;
+  rating: number;
+  released: string;
+  genres: Genre[];
+  ratings: Rating[];
+  short_screenshots: ShortScreens[];
+  stores: store[];
+  tags: Tags[];
+  platforms: platform[];
+  description_raw: string;
+  pubslishers: publishersData[];
+  website: string;
+};
 type Genre = {
-    id: number,
-    image_background: string,
-    name: string,
-}
+  id: number;
+  image_background: string;
+  name: string;
+};
 type platform = {
-    platform:  platformDetail
-}
+  platform: platformDetail;
+};
 type platformDetail = {
-    image_background: string,
-    name: string
-}
+  image_background: string;
+  name: string;
+};
 
 type Rating = {
-    id: number,
-    title: string,
-    percent: number
-}
+  id: number;
+  title: string;
+  percent: number;
+};
 type ShortScreens = {
-    id:number, 
-    image: string,
-}
+  id: number;
+  image: string;
+};
 type Stores = {
-    id: number,
-    store: singleStore
-}
+  id: number;
+  store: singleStore;
+};
 type singleStore = {
-    name: string,
-    image_background: string,
-    domain: string
-}
+  name: string;
+  image_background: string;
+  domain: string;
+};
 type Tags = {
+  name: string;
+  id: number;
+  image_background: string;
+};
+type GameListResponse = {
+  results: GameData[];
+};
+type GameRouteParams = {
+  params: Promise<{ gameId: string }>;
+};
+type publishersData = {
     name: string,
-    id: number,
     image_background: string
 }
-type GameListResponse = {
-    results: GameData[];
-  };
