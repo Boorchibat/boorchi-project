@@ -17,6 +17,10 @@ type GameData = {
   description_raw: string;
   pubslishers: publishersData[];
   website: string;
+  playtime: string;
+  ratings_count: number,
+  achievements_count:number;
+  background_image_additional: string;
 };
 type Genre = {
   id: number;

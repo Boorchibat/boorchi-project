@@ -18,7 +18,10 @@ const Game = async ({ params }: { params: gamePage }) => {
 
   return (
     <div className="flex">
-      <ButtonList />
+      <div className="sticky top-0 h-screen z-10 bg-black">
+        <ButtonList />
+      </div>
+
       <GamePage gameData={gameData} />
     </div>
   );
