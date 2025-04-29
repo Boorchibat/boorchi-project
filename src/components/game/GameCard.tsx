@@ -14,7 +14,7 @@ export const GameCard = ({ game }: GameCardProps) => {
 
 
   return (
-    <div className="w-[150px]h-[300px]">
+    <div className="w-[150px]h-[300px]] rounded-md border-2 border-black mb-[10px]">
       <Link
         href={`/game/${id}`}
         className="flex flex-col gap-x-4 hover:bg-muted rounded-md"

@@ -15,7 +15,7 @@ type GameData = {
   tags: Tags[];
   platforms: platform[];
   description_raw: string;
-  pubslishers: publishersData[];
+  publishers: publishersData[];
   website: string;
   playtime: string;
   ratings_count: number,

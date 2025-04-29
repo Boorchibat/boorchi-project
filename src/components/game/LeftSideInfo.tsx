@@ -24,7 +24,7 @@ export const LeftSideInfo = (props: LeftSideProps) => {
   const [showFull, setShowFull] = useState(false);
   const wordCount = description_raw.split(" ").length;
   const maxWords = 100;
-  const shortDescription = description_raw.slice(0, 500);
+  const shortDescription = description_raw.slice(0, 1000);
   const getShortDescription = () => {
     return shortDescription;
   };

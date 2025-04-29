@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const ButtonList = () => {
   return (
-    <div className="flex flex-col items-center static z-10">
+    <div className="hidden sm:flex flex-col items-center static z-10 2xl:hidden">
       <Link className="bg-gray-50" href={"/"}>
         <Button className="w-[300px] h-[140px] rounded-none text-[25px]">Home</Button>
       </Link>
