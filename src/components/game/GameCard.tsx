@@ -24,14 +24,14 @@ export const GameCard = ({ game }: GameCardProps) => {
         />
 
         <div className="flex-1 bg-white dark:bg-zinc-800 text-black dark:text-white rounded-md w-[250px]">
-          <h4 className="font-bold text-[15px] ml-4">{name}</h4>
-          <div className="flex gap-x-2">
+          <h4 className="font-bold text-[15px]  ml-2 mt-1 ">{name}</h4>
+          <div className="flex gap-x-2  ml-2 ">
             <Star fill="yellow" />
             <h4>{rating}</h4>
           </div>
 
           <div className="mt-3 flex justify-between text-sm font-medium">
-            <h5 className="font-bold">{formattedYear}</h5>
+            <h5 className="font-bold  ml-2 ">{formattedYear}</h5>
             <Button variant="link">
               See more <ArrowRight size={16} />
             </Button>

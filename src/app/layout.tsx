@@ -10,8 +10,7 @@ export const metadata: Metadata = {
     template: "RAWG Game Database",
     default: "RAWG - Video Game Database",
   },
-  description:
-    "RAWG Video Game Database where you can find the latest games",
+  description: "RAWG Video Game Database where you can find the latest games",
 };
 
 const inter = Inter({
@@ -27,16 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <div>{children}</div>
-          <Footer />
-        </ThemeProvider>
+        <Header />
+        <div>{children}</div>
+        <Footer />
       </body>
     </html>
   );

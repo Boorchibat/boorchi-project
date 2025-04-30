@@ -22,7 +22,7 @@ export const GameImage = (props: GameImageProps) => {
     );
   }
   return (
-    <div className={cn("relative overflow-hidden z-10", className)}>
+    <div className={cn("relative overflow-hidden", className)}>
       <Image
         priority
         src={imageURL}
