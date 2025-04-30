@@ -29,7 +29,7 @@ export const GamePage = ({ gameData }: GamePageProps) => {
   console.log(platforms);
   const singlePlatform = platforms.map((p) => p.platform);
   return (
-    <div className="relative w-full ">
+    <div className="relative w-full z-0">
       <Image
         className="absolute z-0 w-full h-[500px] object-cover mix-blend-multiply"
         layout="fill"

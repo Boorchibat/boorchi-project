@@ -6,8 +6,9 @@ import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
 import React from "react";
 
 const Ps4 = () => {
-  const { data, error, isLoading } =
-    useFetchDataFromRAWG<Results>("/games?platforms=18");
+  const { data, error, isLoading } = useFetchDataFromRAWG<Results>(
+    "/games?platforms=18"
+  );
   console.log(data);
   const games = data?.results || [];
 
@@ -23,7 +24,9 @@ const Ps4 = () => {
         <div className="sticky top-0 h-screen">
           <ButtonList />
         </div>
-        <GamesList games={games} />
+        <div className="z-0">
+          <GamesList games={games} />
+        </div>
       </div>
     </div>
   );

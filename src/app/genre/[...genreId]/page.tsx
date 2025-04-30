@@ -25,7 +25,9 @@ const Genre = async ({ params }: GenreRouteParams) => {
         <div className="sticky top-0 h-screen">
           <ButtonList />
         </div>
-        <GamesList games={games} />
+        <div className="z-0">
+          <GamesList games={games} />
+        </div>
       </div>
     </div>
   );

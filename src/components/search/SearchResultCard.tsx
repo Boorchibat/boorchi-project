@@ -16,7 +16,7 @@ export const SearchResultCard = (props: SearchResultCardProps) => {
 
   const formattedYear = new Date(released).getFullYear();
   return (
-    <div>
+    <div className="z-20">
       <Link
         href={`/game/${id}`}
         className="flex gap-x-4 hover:bg-muted rounded-md"

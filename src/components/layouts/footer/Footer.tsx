@@ -14,8 +14,8 @@ export const Footer = () => {
             </Link>
           </div>
           <div className="bg-green-100 p-2 rounded-md">
-            <Link href="/consoles">
-              <h1>See Games available on Consoles</h1>
+            <Link href="/genre">
+              <h1>See Games available on Specific Genres</h1>
             </Link>
           </div>
         </div>

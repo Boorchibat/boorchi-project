@@ -13,12 +13,16 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center bg-[#f9fafb]">
-      <h1 className="font-bold text-[50px] text-black p-5 font-lobster justify-center">Home and Trending</h1>
+      <h1 className="font-bold text-[50px] text-black p-5 font-lobster justify-center">
+        Home and Trending
+      </h1>
       <div className="flex w-full">
         <div className="sticky top-0 h-screen">
           <ButtonList />
         </div>
-        <GamesList games={games} />
+        <div className="z-0">
+          <GamesList games={games} />
+        </div>
       </div>
     </div>
   );

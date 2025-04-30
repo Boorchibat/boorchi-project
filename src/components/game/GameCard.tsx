@@ -13,7 +13,7 @@ export const GameCard = ({ game }: GameCardProps) => {
   const formattedYear = new Date(released).getFullYear();
 
   return (
-    <div className="w-[150px]h-[300px]] rounded-md border-1 border-black mb-[10px]">
+    <div className="w-[150px]h-[300px]] rounded-md border-1 border-black z-0 mb-[10px]">
       <Link
         href={`/game/${id}`}
         className="flex flex-col gap-x-4 hover:bg-muted rounded-md"
