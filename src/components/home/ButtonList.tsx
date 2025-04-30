@@ -8,8 +8,8 @@ export const ButtonList = () => {
       <Link className="bg-gray-50" href={"/"}>
         <Button className="w-[300px] h-[140px] rounded-none text-[25px]">Home</Button>
       </Link>
-      <Link className="bg-gray-50" href={"/console"}>
-        <Button className="w-[300px] h-[140px] rounded-none text-[25px]">Consoles</Button>
+      <Link className="bg-gray-50" href={"/genre"}>
+        <Button className="w-[300px] h-[140px] rounded-none text-[25px]">Genres</Button>
       </Link>
       <Link className="bg-gray-50" href={"/xbox"}>
         <Button className="w-[300px] h-[140px] rounded-none text-[25px] ">Xbox</Button>

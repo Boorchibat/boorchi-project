@@ -3,11 +3,7 @@ import { ButtonList } from "@/components/home";
 import { getGameDetailById } from "@/services/get-game-detail-by-id";
 import React from "react";
 
-type gamePage = {
-  gameId: string;
-};
-
-const Game = async ({ params }: { params: gamePage }) => {
+const Game = async ({ params }: GameRouteParams) => {
   const { gameId } = await params;
 
   const gameData = await getGameDetailById(gameId);

@@ -14,7 +14,7 @@ export const GameCard = ({ game }: GameCardProps) => {
 
 
   return (
-    <div className="w-[150px]h-[300px]] rounded-md border-2 border-black mb-[10px]">
+    <div className="w-[150px]h-[300px]] rounded-md border-1 border-black mb-[10px]">
       <Link
         href={`/game/${id}`}
         className="flex flex-col gap-x-4 hover:bg-muted rounded-md"
@@ -24,9 +24,9 @@ export const GameCard = ({ game }: GameCardProps) => {
           className="w-[250px] h-[125px] rounded-md"
         />
 
-        <div className="flex-1 text-foreground bg-white rounded-md w-[250px]">
+        <div className="flex-1 text-foreground bg-white rounded-md w-[250px] ">
 
-          <h4 className="font-bold text-[15px]">{name}</h4>
+          <h4 className="font-bold text-[15px] ml-4">{name}</h4>
           <div className="flex gap-x-2">
             <Star fill="yellow" />
             <h4>{rating}</h4>

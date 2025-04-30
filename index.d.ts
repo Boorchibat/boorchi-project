@@ -21,6 +21,7 @@ type GameData = {
   ratings_count: number,
   achievements_count:number;
   background_image_additional: string;
+  slug: string,
 };
 type Genre = {
   id: number;
@@ -68,3 +69,6 @@ type publishersData = {
     name: string,
     image_background: string
 }
+type GenreRouteParams = {
+    params: Promise<{ genreId: string }>;
+  };
