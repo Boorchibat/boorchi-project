@@ -18,7 +18,7 @@ import React from 'react'
       const games = (gameData.results)
   return (
       <div className="flex flex-col items-center bg-[#f9fafb]">
-          <h1 className="font-bold text-[50px] text-black p-5 font-lobster">Results for {genre.name}</h1>
+          <h1 className="font-bold text-[50px] text-black p-5 font-lobster justify-center">Results for {genre.name}</h1>
           <div className="flex w-full">
             <div className="sticky top-0 h-screen">
               <ButtonList />

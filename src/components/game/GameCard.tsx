@@ -12,7 +12,6 @@ export const GameCard = ({ game }: GameCardProps) => {
   const { id, background_image, name, rating, released } = game;
   const formattedYear = new Date(released).getFullYear();
 
-
   return (
     <div className="w-[150px]h-[300px]] rounded-md border-1 border-black mb-[10px]">
       <Link
@@ -24,8 +23,7 @@ export const GameCard = ({ game }: GameCardProps) => {
           className="w-[250px] h-[125px] rounded-md"
         />
 
-        <div className="flex-1 text-foreground bg-white rounded-md w-[250px] ">
-
+        <div className="flex-1 bg-white dark:bg-zinc-800 text-black dark:text-white rounded-md w-[250px]">
           <h4 className="font-bold text-[15px] ml-4">{name}</h4>
           <div className="flex gap-x-2">
             <Star fill="yellow" />
