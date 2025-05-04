@@ -42,7 +42,7 @@ export const Header = () => {
           <SearchBar isMobile={false} />
         </div>
         <div></div>
-        <div className="flex">
+        <div className="flex ml-5">
           {currentUser ? (
             <div className="text-white font-semibold rounded-md text-black gap-x-5">
               <span className="mr-[10px]">
@@ -61,7 +61,7 @@ export const Header = () => {
           )}
           <div className="hidden sm:block ">
             {currentUser ? (
-              <Link href={"/favorite"}>
+              <Link href={"/favorites"}>
                 <Heart className="text-white fill-white" size={30} />
               </Link>
             ) : (
