@@ -65,18 +65,18 @@ const Favorites = () => {
 
   return (
     <div className="flex flex-col items-center bg-[#f9fafb]">
-      <h1 className="font-bold text-[50px] text-black p-5 font-lobster">
-        Your Favorite Games
-      </h1>
-      <div className="flex w-full gap-x-10">
-        <div className="sticky top-0 h-screen">
-          <ButtonList />
-        </div>
-        <div className="z-0">
-          <GamesList games={games} />
+        <h1 className="font-bold text-[50px] text-black p-5 font-lobster">
+           Your Favorite Games
+        </h1>
+        <div className="flex w-full">
+          <div className="sticky top-0 h-screen">
+            <ButtonList />
+          </div>
+          <div className="z-0 ml-3">
+            <GamesList games={games} />
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

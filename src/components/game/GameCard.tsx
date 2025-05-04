@@ -25,9 +25,12 @@ export const GameCard = ({ game, isFavorited: isFavoritedProp  }: GameCardProps)
     const checkFavoriteStatus = async () => {
       const favorited = await isGameFavorited(id);
       setIsFavorited(favorited);
+      console.log("Is game favorited?", favorited)
     };
     checkFavoriteStatus();
   }, [id]);
+
+
 
   const handleFavoriteClick = async () => {
     if (!isFavorited) {
@@ -78,8 +81,7 @@ export const GameCard = ({ game, isFavorited: isFavoritedProp  }: GameCardProps)
                     }}
                     fill={isFavorited ? "red" : "none"}
                     className={cn(
-                      "cursor-pointer mr-[10px] mb-[10px] absolute bottom-2 left-55 z-10",
-                      isFavorited && "text-red-500"
+                      "cursor-pointer mr-[10px] mb-[10px] absolute bottom-2 left-55 z-10"
                     )}
                   />
                 ) : (

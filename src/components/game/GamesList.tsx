@@ -10,7 +10,7 @@ export const GamesList = ({ games }: GameListProps) => {
     return <div>No games available right now. Please try again later!</div>;
 
   return (
-    <div className={cn("flex flex-wrap gap-8 justify-center z-10")}>
+    <div className={cn("flex flex-wrap gap-8 z-10")}>
       {games.map((game, index) => (
         <GameCard key={index} game={game} isFavorited={game.isFavorited ?? false} />
       ))}
