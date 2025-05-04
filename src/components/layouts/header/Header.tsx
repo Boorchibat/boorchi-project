@@ -61,7 +61,7 @@ export const Header = () => {
           )}
           <div className="hidden sm:block ">
             {currentUser ? (
-              <Link href={"/favorites"}>
+              <Link href={"/favorite"}>
                 <Heart className="text-white fill-white" size={30} />
               </Link>
             ) : (

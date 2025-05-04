@@ -1,24 +1,24 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { db } from '@/components/firebase/Firebase'; 
-import { collection, getDocs, query, where} from 'firebase/firestore';
-import { GamesList } from '@/components/game';
-import { ButtonList } from '@/components/home';
-
+import { useState, useEffect } from "react";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { db } from "@/components/firebase/Firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { GamesList } from "@/components/game";
+import { ButtonList } from "@/components/home";
 
 const Favorites = () => {
-  const [games, setGames] = useState<GameData[]>([]); 
+  const [games, setGames] = useState<GameData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<User | null>(null); 
+  const [user, setUser] = useState<User | null>(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(getAuth(), (currentUser) => {
-      setUser(currentUser);  
-      setLoading(false);  
+      setUser(currentUser);
+      setLoading(false);
     });
 
-    return () => unsubscribe();  
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -26,14 +26,13 @@ const Favorites = () => {
       const fetchGames = async () => {
         try {
           const gamesCollection = collection(db, "favorites");
-          const q = query(gamesCollection, where("userId", "==", user.uid)); 
+          const q = query(gamesCollection, where("userId", "==", user.uid));
           const gamesSnapshot = await getDocs(q);
-          
-       
+
           const gamesList = gamesSnapshot.docs.map((doc) => {
             const game = doc.data();
             return {
-              id: game.id,
+              id: game.id, 
               name: game.name,
               background_image: game.background_image,
               rating: game.rating,
@@ -42,9 +41,11 @@ const Favorites = () => {
               ratings: game.ratings || [],
               short_screenshots: game.short_screenshots || [],
               stores: game.stores || [],
-            } as GameData; 
+              isFavorited: true,
+            } as GameData & { isFavorited: boolean };
           });
-          setGames(gamesList); 
+
+          setGames(gamesList);
         } catch (error) {
           console.error("Error fetching games:", error);
         }
@@ -52,7 +53,7 @@ const Favorites = () => {
 
       fetchGames();
     }
-  }, [user]);
+  }, [user]); 
 
   if (loading) {
     return <div>Loading...</div>;

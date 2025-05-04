@@ -10,15 +10,16 @@ import {
   removeGameFromFavorites,
 } from "../firebase/FirebaseUtils";
 import { useUserContext } from "../context/UserContextProvider";
-
+import { cn } from "@/lib";
 type GameCardProps = {
   game: GameData;
+  isFavorited: boolean
 };
 
-export const GameCard = ({ game }: GameCardProps) => {
+export const GameCard = ({ game, isFavorited: isFavoritedProp  }: GameCardProps) => {
   const { id, background_image, name, rating, released } = game;
   const formattedYear = new Date(released).getFullYear();
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(isFavoritedProp ?? false);
   const { currentUser } = useUserContext();
   useEffect(() => {
     const checkFavoriteStatus = async () => {
@@ -34,13 +35,14 @@ export const GameCard = ({ game }: GameCardProps) => {
       setIsFavorited(true);
     }
   };
-
+ 
   const handleFavoriteDoubleClick = async () => {
     if (isFavorited) {
       await removeGameFromFavorites(id);
       setIsFavorited(false);
     }
   };
+
 
   return (
     <div className="w-[150px]h-[300px]] rounded-md border-1 border-black z-0 mb-[10px] relative">
@@ -75,7 +77,10 @@ export const GameCard = ({ game }: GameCardProps) => {
                       handleFavoriteDoubleClick();
                     }}
                     fill={isFavorited ? "red" : "none"}
-                    className="cursor-pointer mr-[10px] mb-[10px] absolute bottom-2 left-55 z-10"
+                    className={cn(
+                      "cursor-pointer mr-[10px] mb-[10px] absolute bottom-2 left-55 z-10",
+                      isFavorited && "text-red-500"
+                    )}
                   />
                 ) : (
                   <Button variant="link">
