@@ -13,10 +13,10 @@ export const isGameFavorited = async (id: number) => {
 
 export const addGameToFavorites = async (game: GameData) => {
     const user = auth.currentUser;
-    if (!user) throw new Error("User not logged in");
+    if (!user) return console.log("Error has occured cause the User is not logged in yet") ;
   
     if (typeof game.id === "undefined") {
-      throw new Error("Game ID is undefined. Cannot add to favorites.");
+      return console.log("Unidentified game tried to be added to favorites");
     }
   
     const favRef = doc(db, "favorites", `${user.uid}_${game.id}`);
@@ -35,7 +35,7 @@ export const addGameToFavorites = async (game: GameData) => {
 
 export const removeGameFromFavorites = async (gameId: number) => {
   const user = auth.currentUser;
-  if (!user) throw new Error("An error occurred while removing the game from favorites.AKA User not logged in.");
+  if (!user) return console.log("Sorry you are not logged in so you cant remove the game");
 
   const favRef = doc(db, "favorites", `${user.uid}_${gameId}`);
   await deleteDoc(favRef);

@@ -14,6 +14,11 @@ const UserContext = createContext<ContextType>({ currentUser: null, loading: tru
 export const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -22,6 +27,10 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     });
     return () => unsubscribe();
   }, []);
+
+  if (!isMounted) {
+    return null; 
+  }
 
   return (
     <UserContext.Provider value={{ currentUser, loading }}>
