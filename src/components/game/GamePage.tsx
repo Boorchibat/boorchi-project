@@ -59,6 +59,7 @@ export const GamePage = ({ gameData }: GamePageProps) => {
                 width={500}
                 height={350}
                 className="object-contain overflow-hidden rounded-xl"
+                alt="backgroundAdditional"
               />
               <div className="flex flex-col">
                 <h1 className="font-bold text-white text-[20px]">

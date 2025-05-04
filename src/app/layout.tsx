@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layouts/footer";
 import { Header } from "@/components/layouts/header";
+import { UserContextProvider } from "@/components/context/UserContextProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -25,9 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Header />
-        <div>{children}</div>
-        <Footer />
+        <UserContextProvider>
+          <Header />
+          <div>{children}</div>
+          <Footer />
+        </UserContextProvider>
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { GamesList } from "@/components/game";
 import { ButtonList } from "@/components/home";
 import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
 
-export default function HomePage() {
+const HomePage = () => {
   const { data, error, isLoading } = useFetchDataFromRAWG<Results>("/games");
   const games = data?.results || [];
 
@@ -27,3 +27,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default HomePage

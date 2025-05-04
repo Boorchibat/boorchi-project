@@ -1,8 +1,15 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import React from "react";
 import { Button } from "../ui";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Heart, Star } from "lucide-react";
 import { GameImage } from "./GameImage";
+import {
+  addGameToFavorites,
+  isGameFavorited,
+  removeGameFromFavorites,
+} from "../firebase/FirebaseUtils";
+import { useUserContext } from "../context/UserContextProvider";
 
 type GameCardProps = {
   game: GameData;
@@ -11,9 +18,32 @@ type GameCardProps = {
 export const GameCard = ({ game }: GameCardProps) => {
   const { id, background_image, name, rating, released } = game;
   const formattedYear = new Date(released).getFullYear();
+  const [isFavorited, setIsFavorited] = useState(false);
+  const { currentUser } = useUserContext();
+  useEffect(() => {
+    const checkFavoriteStatus = async () => {
+      const favorited = await isGameFavorited(id);
+      setIsFavorited(favorited);
+    };
+    checkFavoriteStatus();
+  }, [id]);
+
+  const handleFavoriteClick = async () => {
+    if (!isFavorited) {
+      await addGameToFavorites(game);
+      setIsFavorited(true);
+    }
+  };
+
+  const handleFavoriteDoubleClick = async () => {
+    if (isFavorited) {
+      await removeGameFromFavorites(id);
+      setIsFavorited(false);
+    }
+  };
 
   return (
-    <div className="w-[150px]h-[300px]] rounded-md border-1 border-black z-0 mb-[10px]">
+    <div className="w-[150px]h-[300px]] rounded-md border-1 border-black z-0 mb-[10px] relative">
       <Link
         href={`/game/${id}`}
         className="flex flex-col gap-x-4 hover:bg-muted rounded-md"
@@ -32,9 +62,28 @@ export const GameCard = ({ game }: GameCardProps) => {
 
           <div className="mt-3 flex justify-between text-sm font-medium">
             <h5 className="font-bold  ml-2 ">{formattedYear}</h5>
-            <Button variant="link">
-              See more <ArrowRight size={16} />
-            </Button>
+            <div className="flex flex-col">
+              <div className="ml-18">
+                {currentUser ? (
+                  <Heart 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleFavoriteClick();
+                    }}
+                    onDoubleClick={(e) => {
+                      e.preventDefault();
+                      handleFavoriteDoubleClick();
+                    }}
+                    fill={isFavorited ? "red" : "none"}
+                    className="cursor-pointer mr-[10px] mb-[10px] absolute bottom-2 left-55 z-10"
+                  />
+                ) : (
+                  <Button variant="link">
+                    See more <ArrowRight size={16} />
+                  </Button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </Link>
