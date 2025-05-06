@@ -6,6 +6,7 @@ import { db } from "@/components/firebase/Firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { GamesList } from "@/components/game";
 import { ButtonList } from "@/components/home";
+import HomeSkeleton from "@/components/skeleton/HomeSkeleton";
 
 const Favorites = () => {
   const [games, setGames] = useState<GameData[]>([]);
@@ -54,13 +55,15 @@ const Favorites = () => {
       fetchGames();
     }
   }, [user]); 
+  
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <HomeSkeleton/>;
 
   if (!user) {
     return <div>User is not logged in. Please sign in to view favorites.</div>;
+  }
+  if(!games) {
+    return <div>No games favorited at the moment.</div>
   }
 
   return (
@@ -73,7 +76,7 @@ const Favorites = () => {
             <ButtonList />
           </div>
           <div className="z-0 ml-3">
-            <GamesList games={games} />
+            <GamesList games={games} onFavoritePage={true} />
           </div>
         </div>
       </div>

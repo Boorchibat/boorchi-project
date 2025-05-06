@@ -2,6 +2,7 @@
 
 import { GamesList } from "@/components/game";
 import { ButtonList } from "@/components/home";
+import HomeSkeleton from "@/components/skeleton/HomeSkeleton";
 import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
 import React from "react";
 
@@ -11,7 +12,7 @@ const Xbox = () => {
   console.log(data);
   const games = data?.results || [];
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <HomeSkeleton/>;
   if (error) return <p>Error loading games.</p>;
 
   return (

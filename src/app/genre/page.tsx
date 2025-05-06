@@ -2,6 +2,7 @@
 
 import { GenreCard } from "@/components/genre/GenreCard";
 import { ButtonList } from "@/components/home";
+import HomeSkeleton from "@/components/skeleton/HomeSkeleton";
 import { useFetchDataFromRAWG } from "@/hooks/useFetchDataFromRAWG";
 import React from "react";
 
@@ -10,7 +11,7 @@ const Genre = () => {
   const genres = data?.results || [];
   console.log(genres);
   if (error) return <div>Error</div>;
-  if (isLoading) return <div>...Loading</div>;
+  if (isLoading) return <HomeSkeleton/>;
   return (
     <div>
       <div className="flex">
