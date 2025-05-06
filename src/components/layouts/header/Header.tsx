@@ -59,7 +59,7 @@ export const Header = () => {
               </a>
             </div>
           )}
-          <div className="hidden sm:block ">
+          <div className="hidden sm:block ml-[10px]">
             {currentUser ? (
               <Link href={"/favorite"}>
                 <Heart className="text-white fill-white" size={30} />
